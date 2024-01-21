@@ -42,7 +42,7 @@
 // } 
 
 
-const VeriToken = (req, res) => {
+const VeryToken = (req, res) => {
   res.send("TOKEN VERIFY")
 }
 
