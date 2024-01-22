@@ -30,26 +30,51 @@ const ReceiveMessage = (req, res) => {
     var value = changes["value"];
     var messageObject = value["messages"];
 
-    myConsole.log(messageObject);
+    if(typeof messageObject != "undefined"){
+      var messages = messageObject[0];
+      var text = GetTexUser(messages);
+      myConsole.log(text);
+    }
+
 
     res.send("EVENT_RECEIVED");
     
   } catch (e) {
 
     myConsole.log(e);
-
     res.send("EVENT_RECEIVED");
   }
 } 
 
+function GetTexUser(messages) {
+  var text = "";
+  var typeMessage = messages["type"];
+  if(typeMessage =="text"){
+    text = (messages["text"])["body"];
+  }
+  else if(typeMessage == "interactive"){
+    var interactiveObject = messages["interactive"];
+    var typeInteractive = interactiveObject["type"];
 
-// const VeryToken = (req, res) => {
-//   res.send("TOKEN VERIFY")
-// }
+    if (typeInteractive == "button_reply") {
 
-// const ReceiveMessage = (req, res) => {
-//   res.send("RECEIVE MESSAGE")
-// }
+      text = (interactiveObject["button_reply"])["title"];
+      
+    }else if (typeInteractive == "list_reply") {
+ 
+      text = (interactiveObject["list_reply"])["title"];
+
+    }else{
+      myConsole.log("Pas de message");
+    }
+
+  }
+  else{
+    myConsole.log("Pas de message");
+  }
+
+  return text;
+}
 
 
 module.exports = {
