@@ -1,25 +1,25 @@
 // const fs = require("fs");
 // const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 
-// const VeryToken = (req, res) => {
-//     try {
-//         var accessToken = "AZSDFVLODOEDZO390301002";
-//         var token = req.query["hub.verify_token"];
-//         var challenge = req.body["hub.challenge"];
+const VeryToken = (req, res) => {
+    try {
+        var accessToken = "AZSDFVLODOEDZO390301002";
+        var token = req.query["hub.verify_token"];
+        var challenge = req.body["hub.challenge"];
 
-// if (challenge != null && token != null && token == accessToken) {
-//     res.send(challenge);
-// } else {
-//     res.status(400).send();
-// }
+if (challenge != null && token != null && token == accessToken) {
+    res.send(challenge);
+} else {
+    res.status(400).send();
+}
 
-//     } catch (e) {
-//         res.status(400).send();
-//     }
+    } catch (e) {
+        res.status(400).send();
+    }
 
 
-//     res.send('Hello VeriToken');
-// } 
+    res.send('Hello VeriToken');
+} 
 
 
 // const ReceiveMessage = (req, res) => {
@@ -42,9 +42,9 @@
 // } 
 
 
-const VeryToken = (req, res) => {
-  res.send("TOKEN VERIFY")
-}
+// const VeryToken = (req, res) => {
+//   res.send("TOKEN VERIFY")
+// }
 
 const ReceiveMessage = (req, res) => {
   res.send("RECEIVE MESSAGE")
