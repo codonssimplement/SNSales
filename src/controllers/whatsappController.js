@@ -1,5 +1,5 @@
-// const fs = require("fs");
-// const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
+const fs = require("fs");
+const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 
 const VeryToken = (req, res) => {
     try {
@@ -22,33 +22,34 @@ if (challenge != null && token != null && token == accessToken) {
 } 
 
 
-// const ReceiveMessage = (req, res) => {
-//   try {
-//     var entry = (req.body["entry"])[0];
-//     var changes = (entry["changes"])[0];
-//     var value = changes["value"];
-//     var messageObject = value["message"];
 
-//     myConsole.log(messageObject);
+const ReceiveMessage = (req, res) => {
+  try {
+    var entry = (req.body["entry"])[0];
+    var changes = (entry["changes"])[0];
+    var value = changes["value"];
+    var messageObject = value["messages"];
 
-//     res.send("EVENT_RECEIVED");
+    myConsole.log(messageObject);
+
+    res.send("EVENT_RECEIVED");
     
-//   } catch (e) {
+  } catch (e) {
 
-//     myConsole.log(e);
+    myConsole.log(e);
 
-//     res.send("EVENT_RECEIVED");
-//   }
-// } 
+    res.send("EVENT_RECEIVED");
+  }
+} 
 
 
 // const VeryToken = (req, res) => {
 //   res.send("TOKEN VERIFY")
 // }
 
-const ReceiveMessage = (req, res) => {
-  res.send("RECEIVE MESSAGE")
-}
+// const ReceiveMessage = (req, res) => {
+//   res.send("RECEIVE MESSAGE")
+// }
 
 
 module.exports = {
